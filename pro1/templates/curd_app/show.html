@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>show page</title>
+{% endblock %}
+{% block content %}
+<body>
+<h3 class="text-center text-primary"> <marquee>Exam Details</marquee></h3>
+            <table class="table table-success table-striped">
+                <thead>
+                <tr>
+
+                    <th> Student_Name  </th>
+                    <th>  Register_Number </th>
+                    <th> Register_Course  </th>
+                    <th> Gender  </th>
+                    <th>  Exam_Start </th>
+                     <th> Exam_End </th>
+                    <th> Comments  </th>
+                    <th colspan="2" class="text-center"> Action </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in obj %}
+                <tr>
+                    <td>{{c.student_name}}</td>
+                    <td>{{c.register_number}}</td>
+                    <td>{{c.register_course}}</td>
+                    <td>{{c.gender}}</td>
+                    <td>{{c.exam_start}}</td>
+                    <td>{{c.exam_end}}</td>
+                    <td>{{c.comments}}</td>
+                    <td>
+                        <a href="{% url 'update_url' c.id %}">
+                            <button class="btn btn-warning col-12"><i class="bi bi-pencil-square"></i>&nbsp Upadte </button>
+                        </a>
+                    </td>
+                     <td>
+                        <a href="{% url 'cancel_url' c.id %}">
+                            <button  class="btn btn-danger col-12"><i class="bi bi-trash3-fill"></i>&nbsp Delete </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+</body>
+{% endblock %}
